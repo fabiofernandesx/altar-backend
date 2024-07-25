@@ -1,8 +1,7 @@
 import { strictEnv } from './strict-env'
-import { GenerateRandomLettersArray } from './letters-functions'
-import { CodeGeneration } from './code-generation'
 import express from 'express'
 import cors from 'cors'
+import { HealthCheck, GridNCode, Payments } from './routes'
 
 const app = express()
 
@@ -12,13 +11,11 @@ const corsOptions = {
   methods: 'GET, POST',
 }
 app.use(cors(corsOptions))
+app.use(express.json())
 
-app.get('/:bias?', (req, res) => {
-  const array = GenerateRandomLettersArray(strictEnv.ARRAY_SIZE, strictEnv.BIAS_WEIGHT, req.params.bias)
-  const seconds = new Date().getSeconds()
-  const code = CodeGeneration(array, seconds)
-  res.json({ array: array, code: code })
-})
+app.use('/', HealthCheck)
+app.use('/gridncode', GridNCode)
+app.use('/payments', Payments)
 
 app.listen(strictEnv.PORT, () => {
   console.log(`Server listening at http://localhost:${strictEnv.PORT}`)
