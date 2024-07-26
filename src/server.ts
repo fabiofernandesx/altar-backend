@@ -3,7 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import http from 'http'
 import { Server } from 'socket.io'
-import { HealthCheck, GridNCode, Payments } from './routes'
+import { HealthCheck, Payments } from './routes'
 import { GenerateData } from './functions/generate-data'
 import { prisma } from './lib/prisma'
 
