@@ -1,4 +1,4 @@
-import { strictEnv } from './strict-env'
+import { strictEnv } from '../strict-env'
 
 export const GenerateValidLettersString = (bias?: string): string => {
   let validLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
