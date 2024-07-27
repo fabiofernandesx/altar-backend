@@ -1,5 +1,8 @@
 name: CICD
-
+env:
+  ARRAY_SIZE: 100 
+  BIAS_WEIGHT: 20
+  
 on:
   push:
     branches:
